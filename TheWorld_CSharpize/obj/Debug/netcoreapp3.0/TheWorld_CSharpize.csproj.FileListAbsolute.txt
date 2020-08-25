@@ -1,0 +1,11 @@
+/Users/johanpark/Desktop/TheWorld_CSharpize/TheWorld_CSharpize/TheWorld_CSharpize/bin/Debug/netcoreapp3.0/TheWorld_CSharpize
+/Users/johanpark/Desktop/TheWorld_CSharpize/TheWorld_CSharpize/TheWorld_CSharpize/bin/Debug/netcoreapp3.0/TheWorld_CSharpize.deps.json
+/Users/johanpark/Desktop/TheWorld_CSharpize/TheWorld_CSharpize/TheWorld_CSharpize/bin/Debug/netcoreapp3.0/TheWorld_CSharpize.runtimeconfig.json
+/Users/johanpark/Desktop/TheWorld_CSharpize/TheWorld_CSharpize/TheWorld_CSharpize/bin/Debug/netcoreapp3.0/TheWorld_CSharpize.runtimeconfig.dev.json
+/Users/johanpark/Desktop/TheWorld_CSharpize/TheWorld_CSharpize/TheWorld_CSharpize/bin/Debug/netcoreapp3.0/TheWorld_CSharpize.dll
+/Users/johanpark/Desktop/TheWorld_CSharpize/TheWorld_CSharpize/TheWorld_CSharpize/bin/Debug/netcoreapp3.0/TheWorld_CSharpize.pdb
+/Users/johanpark/Desktop/TheWorld_CSharpize/TheWorld_CSharpize/TheWorld_CSharpize/obj/Debug/netcoreapp3.0/TheWorld_CSharpize.csprojAssemblyReference.cache
+/Users/johanpark/Desktop/TheWorld_CSharpize/TheWorld_CSharpize/TheWorld_CSharpize/obj/Debug/netcoreapp3.0/TheWorld_CSharpize.AssemblyInfoInputs.cache
+/Users/johanpark/Desktop/TheWorld_CSharpize/TheWorld_CSharpize/TheWorld_CSharpize/obj/Debug/netcoreapp3.0/TheWorld_CSharpize.AssemblyInfo.cs
+/Users/johanpark/Desktop/TheWorld_CSharpize/TheWorld_CSharpize/TheWorld_CSharpize/obj/Debug/netcoreapp3.0/TheWorld_CSharpize.dll
+/Users/johanpark/Desktop/TheWorld_CSharpize/TheWorld_CSharpize/TheWorld_CSharpize/obj/Debug/netcoreapp3.0/TheWorld_CSharpize.pdb
