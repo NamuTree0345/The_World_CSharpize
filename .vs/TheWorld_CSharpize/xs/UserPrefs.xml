@@ -1,0 +1,26 @@
+﻿<Properties StartupConfiguration="{5AB09CE2-DEDB-44F4-B6D8-21D9C7BE8BA8}|Default">
+  <MonoDevelop.Ide.ItemProperties.TheWorld__CSharpize PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="TheWorld_CSharpize/Program.cs">
+    <Files>
+      <File FileName="TheWorld_CSharpize/Program.cs" Line="646" Column="25" />
+      <File FileName="TheWorld_CSharpize/Stat.cs" Line="9" Column="21" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="TheWorld_CSharpize" expanded="True">
+            <Node name="TheWorld_CSharpize" expanded="True">
+              <Node name="Program.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
