@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.0": {
+      "TheWorld_TestMod/1.0.0": {
+        "dependencies": {
+          "TheWorld_CSharpize": "1.0.0"
+        },
+        "runtime": {
+          "TheWorld_TestMod.dll": {}
+        }
+      },
+      "TheWorld_CSharpize/1.0.0": {
+        "runtime": {
+          "TheWorld_CSharpize.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "TheWorld_TestMod/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "TheWorld_CSharpize/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

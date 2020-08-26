@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    ".NETCoreApp,Version=v3.0": {}
+    ".NETCoreApp,Version=v3.0": {
+      "TheWorld_CSharpize/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.0",
+        "compile": {
+          "bin/placeholder/TheWorld_CSharpize.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TheWorld_CSharpize.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "TheWorld_CSharpize/1.0.0": {
+      "type": "project",
+      "path": "../TheWorld_CSharpize/TheWorld_CSharpize.csproj",
+      "msbuildProject": "../TheWorld_CSharpize/TheWorld_CSharpize.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    ".NETCoreApp,Version=v3.0": []
+    ".NETCoreApp,Version=v3.0": [
+      "TheWorld_CSharpize >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\namutree0345\\.nuget\\packages\\": {}
@@ -13,11 +32,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\DevSources\\The_World_CSharpize\\TheWorld_CSharpize\\TheWorld_CSharpize.csproj",
-      "projectName": "TheWorld_CSharpize",
-      "projectPath": "D:\\DevSources\\The_World_CSharpize\\TheWorld_CSharpize\\TheWorld_CSharpize.csproj",
+      "projectUniqueName": "D:\\DevSources\\The_World_CSharpize\\TheWorld_TestMod\\TheWorld_TestMod.csproj",
+      "projectName": "TheWorld_TestMod",
+      "projectPath": "D:\\DevSources\\The_World_CSharpize\\TheWorld_TestMod\\TheWorld_TestMod.csproj",
       "packagesPath": "C:\\Users\\namutree0345\\.nuget\\packages\\",
-      "outputPath": "D:\\DevSources\\The_World_CSharpize\\TheWorld_CSharpize\\obj\\",
+      "outputPath": "D:\\DevSources\\The_World_CSharpize\\TheWorld_TestMod\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\namutree0345\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -33,7 +52,11 @@
       },
       "frameworks": {
         "netcoreapp3.0": {
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\DevSources\\The_World_CSharpize\\TheWorld_CSharpize\\TheWorld_CSharpize.csproj": {
+              "projectPath": "D:\\DevSources\\The_World_CSharpize\\TheWorld_CSharpize\\TheWorld_CSharpize.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -58,10 +81,6 @@
           {
             "name": "Microsoft.AspNetCore.App.Ref",
             "version": "[3.0.1, 3.0.1]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[3.0.3, 3.0.3]"
           },
           {
             "name": "Microsoft.NETCore.App.Ref",

@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "TPJjEf518tQztClkQMVxIrweBWu5V3KIg8ThgvqEtJszvDn2A0zQm3D580d1cBhifigULAM3aYN5914nue5FtQ==",
+  "success": true,
+  "projectFilePath": "D:\\DevSources\\The_World_CSharpize\\TheWorld_TestMod\\TheWorld_TestMod.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\namutree0345\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.0.1\\microsoft.aspnetcore.app.ref.3.0.1.nupkg.sha512",
+    "C:\\Users\\namutree0345\\.nuget\\packages\\microsoft.netcore.app.ref\\3.0.0\\microsoft.netcore.app.ref.3.0.0.nupkg.sha512",
+    "C:\\Users\\namutree0345\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\3.0.0\\microsoft.windowsdesktop.app.ref.3.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

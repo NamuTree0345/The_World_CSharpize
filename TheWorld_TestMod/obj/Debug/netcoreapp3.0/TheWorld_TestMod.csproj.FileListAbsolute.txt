@@ -1,0 +1,13 @@
+D:\DevSources\The_World_CSharpize\TheWorld_TestMod\bin\Debug\netcoreapp3.0\TheWorld_CSharpize.exe
+D:\DevSources\The_World_CSharpize\TheWorld_TestMod\bin\Debug\netcoreapp3.0\TheWorld_TestMod.deps.json
+D:\DevSources\The_World_CSharpize\TheWorld_TestMod\bin\Debug\netcoreapp3.0\TheWorld_TestMod.dll
+D:\DevSources\The_World_CSharpize\TheWorld_TestMod\bin\Debug\netcoreapp3.0\TheWorld_TestMod.pdb
+D:\DevSources\The_World_CSharpize\TheWorld_TestMod\bin\Debug\netcoreapp3.0\TheWorld_CSharpize.dll
+D:\DevSources\The_World_CSharpize\TheWorld_TestMod\bin\Debug\netcoreapp3.0\TheWorld_CSharpize.pdb
+D:\DevSources\The_World_CSharpize\TheWorld_TestMod\obj\Debug\netcoreapp3.0\TheWorld_TestMod.csprojAssemblyReference.cache
+D:\DevSources\The_World_CSharpize\TheWorld_TestMod\obj\Debug\netcoreapp3.0\TheWorld_TestMod.AssemblyInfoInputs.cache
+D:\DevSources\The_World_CSharpize\TheWorld_TestMod\obj\Debug\netcoreapp3.0\TheWorld_TestMod.AssemblyInfo.cs
+D:\DevSources\The_World_CSharpize\TheWorld_TestMod\obj\Debug\netcoreapp3.0\TheWorld_TestMod.csproj.CoreCompileInputs.cache
+D:\DevSources\The_World_CSharpize\TheWorld_TestMod\obj\Debug\netcoreapp3.0\TheWorld_TestMod.csproj.CopyComplete
+D:\DevSources\The_World_CSharpize\TheWorld_TestMod\obj\Debug\netcoreapp3.0\TheWorld_TestMod.dll
+D:\DevSources\The_World_CSharpize\TheWorld_TestMod\obj\Debug\netcoreapp3.0\TheWorld_TestMod.pdb

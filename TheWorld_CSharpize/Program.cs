@@ -1,5 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
 using System.Threading;
+using TheWorld_CSharpize.api;
+using TheWorld_CSharpize.api.Registry;
 
 namespace TheWorld_CSharpize
 {
@@ -7,9 +12,13 @@ namespace TheWorld_CSharpize
     {
         static Stat p;
 
+        // MOD
+        public static List<Registerable> modRegistry = new List<Registerable>();
+        public static List<MainClass> mods = new List<MainClass>();
+
         public static void Sleep(int time)
         {
-            Thread.Sleep(time);
+            //Thread.Sleep(time);
         }
 
         static int[] Item = { 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
@@ -37,7 +46,7 @@ namespace TheWorld_CSharpize
                                 "없음",
                                 };
 
-        static Stat[] Mob = new Stat[2];
+        static Stat[] Mob = new Stat[10];
 
         static float Money = 100;//돈
 
@@ -65,24 +74,42 @@ namespace TheWorld_CSharpize
         static void Line()
         {
 
-            ColorString(8, "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n");
+            ColorString(8, "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
 
         }
 
         static string[] MAPINF =
         {
-	        "1층부터 10층의 던전에는 약한 마물들이 살고 있다.\n그 중 1층은 마을과도 연결되어 있는 곳.\n저 멀리 슬라임이 보인다.\n",
-	        "넌 모찌나간다\n"
-	
+	        "1층부터 10층의 던전에는 약한 마물들이 살고 있다.\n그 중 1층은 마을과도 연결되어 있는 곳.\n저 멀리 슬라임이 보인다.",
+               "저 멀리 슬라임 덩어리가 보인다.",
+               "저 멀리 해골 병사가 보인다.",
+               "저 멀리 스켈레톤이 보인다.",
+               "저 멀리 썩은 스켈레톤이 보인다.",
+               "저 멀리 고블린이 보인다.",
+               "저 멀리 홉 고블린이 보인다.",
+               "저 멀리 트롤이 보인다.",
+               "저 멀리 오크가 보인다.",
+               "보스가 있는 최상층이다.저 멀리 골렘이 보인다."
+
         };
         static string[] MobName = 
         {
 	        "슬라임",
-	        "나는 최종보스. 너는 모찌나간다",
+	        "슬라임 덩어리",
+            "해골 병사",
+            "스켈레톤",
+            "썩은 스켈레톤",
+            "고블린",
+            "홉 고블린",
+            "트롤",
+            "오크",
+            "골렘"
         };
 
         static void Main(string[] args)
         {
+            //Array.Resize(ref MAPINF, 9999999);
+            //Array.Resize(ref MobName, 9999999);
             p = new Stat();
 
             /*-----변수 초기화-----*/
@@ -96,6 +123,48 @@ namespace TheWorld_CSharpize
 
             //플래이어 분배스텟
             p.STR = 0; p.INT = 0; p.SPD = 0; p.REG = 0; p.BOD = 0;//분배스텟
+            Console.WriteLine(modRegistry.Count);
+            // ModInit
+            foreach (string file in Directory.GetFiles(Environment.CurrentDirectory + "\\Mods"))
+            {
+                if(file.EndsWith(".dll"))
+                {
+                    Assembly assembly = Assembly.LoadFrom(file);
+                    Type[] types = assembly.GetTypes();
+                    foreach (Type item in types)
+                    {
+                        //Console.WriteLine(item.BaseType.ToString());
+
+                        if (item.BaseType.ToString() == "TheWorld_CSharpize.api.MainClass")
+                        {
+                            MainClass mC = (MainClass)Activator.CreateInstance(item);
+                            mods.Add(mC);
+                            mC.OnEnable();
+                            mC.OnInitMobs();
+                        }
+                    }
+                    //MainClass modmain = (MainClass)modConfig.get;
+                    //mods.Add(modConfig);
+                    //modmain.OnEnable();
+                    //modmain.OnInitMobs();
+                }
+            }
+            Console.WriteLine(modRegistry.Count);
+            foreach(Registerable reg in modRegistry)
+            {
+                if(reg.getRegistryType() == RegistryType.MOB)
+                {
+                    api.Entity.Mob mb = (api.Entity.Mob)reg;
+                    
+                    Array.Resize(ref MobName, MobName.Length + 1);
+                    Array.Resize(ref MAPINF, MAPINF.Length + 1);
+                    Array.Resize(ref Mob, Mob.Length + 1);
+                    Mob[Mob.Length - 1] = mb.getStat();
+                    MobName[MobName.Length - 1] = mb.getMobName();
+                    MAPINF[MAPINF.Length - 1] = mb.getMobDesc();
+                    Console.WriteLine(MAPINF.Length);
+                }
+            }
 
             City();
         }
@@ -272,22 +341,81 @@ namespace TheWorld_CSharpize
         {
 
             //몹 스텟 초기화 
+            Console.WriteLine(Mob.Length);
+            for(int i = 0; i < Mob.Length; i++)
+            {
+                Mob[i] = new Stat();
+            }
 
             //1층
-            Mob[0] = new Stat();
-            Mob[0].Exp = 10; Mob[0].MaxExp = 5;
+            Mob[0].Exp = 1; Mob[0].MaxExp = 5;
             Mob[0].MaxHp = 30; Mob[0].Hp = Mob[0].MaxHp; Mob[0].HpGen = 0;//채력 
             Mob[0].MaxPp = 10; Mob[0].Pp = Mob[0].MaxPp; Mob[0].PpGen = 1;//마나 
             Mob[0].Atk = 3; Mob[0].Def = 0;//공격력, 방어력 
             Mob[0].Speed = 40; Mob[0].Power = 3;//속도, 힘
 
             //2층
-            Mob[1] = new Stat();
-            Mob[1].Exp = 0; Mob[1].MaxExp = 0;
-            Mob[1].MaxHp = 10000; Mob[1].Hp = Mob[1].MaxHp; Mob[1].HpGen = 100;//채력 
-            Mob[1].MaxPp = 10000; Mob[1].Pp = Mob[1].MaxPp; Mob[1].PpGen = 100;//마나 
-            Mob[1].Atk = 1000; Mob[1].Def = 1000;//공격력, 방어력 
-            Mob[1].Speed = 100000; Mob[1].Power = 300;//속도, 힘 
+            Mob[1].Exp = 20; Mob[1].MaxExp = 20;
+            Mob[1].MaxHp = 40; Mob[1].Hp = Mob[1].MaxHp; Mob[1].HpGen = 0;//채력 
+            Mob[1].MaxPp = 0; Mob[1].Pp = Mob[1].MaxPp; Mob[1].PpGen = 0;//마나 
+            Mob[1].Atk = 4; Mob[1].Def = 0;//공격력; 방어력 
+            Mob[1].Speed = 100; Mob[1].Power = 6;//속도; 힘 
+
+            //3층
+            Mob[2].Exp = 40;Mob[2].MaxExp = 40;
+            Mob[2].MaxHp = 60; Mob[2].Hp = Mob[2].MaxHp; Mob[2].HpGen = 0;//채력 
+            Mob[2].MaxPp = 0; Mob[2].Pp = Mob[2].MaxPp; Mob[2].PpGen = 0;//마나 
+            Mob[2].Atk = 6; Mob[2].Def = 0;//공격력; 방어력 
+            Mob[2].Speed = 100; Mob[2].Power = 9;//속도; 힘 
+
+            //4층
+            Mob[3].Exp = 70;Mob[3].MaxExp = 70;
+            Mob[3].MaxHp = 90; Mob[3].Hp = Mob[3].MaxHp; Mob[3].HpGen = 1;//채력 
+            Mob[3].MaxPp = 0; Mob[3].Pp = Mob[3].MaxPp; Mob[3].PpGen = 0;//마나 
+            Mob[3].Atk = 9; Mob[3].Def = 0;//공격력; 방어력 
+            Mob[3].Speed = 100; Mob[3].Power = 12;//속도; 힘 
+
+            //5층
+            Mob[4].Exp = 110;Mob[4].MaxExp = 120;
+            Mob[4].MaxHp = 150; Mob[4].Hp = Mob[4].MaxHp; Mob[4].HpGen = 1;//채력 
+            Mob[4].MaxPp = 0; Mob[4].Pp = Mob[4].MaxPp; Mob[4].PpGen = 0;//마나 
+            Mob[4].Atk = 13; Mob[4].Def = 0;//공격력; 방어력 
+            Mob[4].Speed = 100; Mob[4].Power = 15;//속도; 힘 
+
+            //6층
+            Mob[5].Exp = 160;Mob[5].MaxExp = 190;
+            Mob[5].MaxHp = 230; Mob[5].Hp = Mob[5].MaxHp; Mob[5].HpGen = 2;//채력 
+            Mob[5].MaxPp = 0; Mob[5].Pp = Mob[5].MaxPp; Mob[5].PpGen = 0;//마나 
+            Mob[5].Atk = 18; Mob[5].Def = 2;//공격력; 방어력 
+            Mob[5].Speed = 100; Mob[5].Power = 18;//속도; 힘 
+
+            //7층
+            Mob[6].Exp = 220;Mob[6].MaxExp = 280;
+            Mob[6].MaxHp = 480; Mob[6].Hp = Mob[6].MaxHp; Mob[6].HpGen = 4;//채력 
+            Mob[6].MaxPp = 0; Mob[6].Pp = Mob[6].MaxPp; Mob[6].PpGen = 0;//마나 
+            Mob[6].Atk = 24; Mob[6].Def = 3;//공격력; 방어력 
+            Mob[6].Speed = 100; Mob[6].Power = 21;//속도; 힘 
+
+            //8층
+            Mob[7].Exp = 290;Mob[7].MaxExp = 450;
+            Mob[7].MaxHp = 750; Mob[7].Hp = Mob[7].MaxHp; Mob[7].HpGen = 7;//채력 
+            Mob[7].MaxPp = 0; Mob[7].Pp = Mob[7].MaxPp; Mob[7].PpGen = 0;//마나 
+            Mob[7].Atk = 31; Mob[7].Def = 4;//공격력; 방어력 
+            Mob[7].Speed = 100; Mob[7].Power = 24;//속도; 힘 
+
+            //9층
+            Mob[8].Exp = 370;Mob[8].MaxExp = 600;
+            Mob[8].MaxHp = 1000; Mob[8].Hp = Mob[8].MaxHp; Mob[8].HpGen = 10;//채력 
+            Mob[8].MaxPp = 0; Mob[8].Pp = Mob[8].MaxPp; Mob[8].PpGen = 0;//마나 
+            Mob[8].Atk = 39; Mob[8].Def = 5;//공격력; 방어력 
+            Mob[8].Speed = 100; Mob[8].Power = 27;//속도; 힘 
+
+            //10층
+            Mob[9].Exp = 1500;Mob[9].MaxExp = 2000;
+            Mob[9].MaxHp = 5000; Mob[9].Hp = Mob[9].MaxHp; Mob[9].HpGen = 50;//채력 
+            Mob[9].MaxPp = 10; Mob[9].Pp = Mob[9].MaxPp; Mob[9].PpGen = 0;//마나 
+            Mob[9].Atk = 50; Mob[9].Def = 10;//공격력; 방어력 
+            Mob[9].Speed = 100; Mob[9].Power = 50;//속도; 힘
 
             //힐 
 
@@ -315,6 +443,7 @@ namespace TheWorld_CSharpize
             ColorString(7, "2:잡화상점 입장\n");
             ColorString(7, "3:스테이더스 확인\n");
             ColorString(7, "4:정비\n");
+            ColorString(7, "5:모드(TML)\n");
 
             Select = Console.ReadLine();
 
@@ -341,12 +470,35 @@ namespace TheWorld_CSharpize
                     goto B1;
                     break;
 
+                case "5":
+                    ShowMods();
+                    break;
+
                 default:
                     goto B1;//B1
 
             }
 
 
+        }
+
+        static void ShowMods()
+        {
+            Console.WriteLine("모드 리스트");
+            Console.WriteLine("-----------");
+            foreach (MainClass modConfig in mods)
+            {
+                Console.WriteLine(modConfig.MOD_NAME + " - " + modConfig.MOD_DESC + "(by " + modConfig.MOD_AUTHOR + ")");
+            }
+            if(mods.Count == 0)
+            {
+                Console.WriteLine("모드가 없습니다.");
+            }
+            Console.WriteLine("-----------");
+            Console.WriteLine("아무키나 누를시 탈주합니다.");
+             Console.ReadKey();
+            Console.Clear();
+            City();
         }
 
         static void SelectItem()
@@ -724,6 +876,11 @@ namespace TheWorld_CSharpize
                     Line();
                     ColorString(4, "귀환석이 남아 있어 사망하지 않고 마을로 귀환합니다.\n");
                     Sleep(800);
+                    Line();
+                    ColorString(4, "기절하여 경험치가 0으로 초기화되며, 요구되는 경험치량이 2배 증가합니다..\n");
+                    Sleep(800);
+                    p.Exp = 0;
+                    p.MaxExp *= 2;
                     p.Hp = 1;
                     Item[0] -= 1;
                     City();

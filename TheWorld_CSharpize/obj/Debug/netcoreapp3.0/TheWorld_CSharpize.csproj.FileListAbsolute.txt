@@ -9,3 +9,16 @@
 /Users/johanpark/Desktop/TheWorld_CSharpize/TheWorld_CSharpize/TheWorld_CSharpize/obj/Debug/netcoreapp3.0/TheWorld_CSharpize.AssemblyInfo.cs
 /Users/johanpark/Desktop/TheWorld_CSharpize/TheWorld_CSharpize/TheWorld_CSharpize/obj/Debug/netcoreapp3.0/TheWorld_CSharpize.dll
 /Users/johanpark/Desktop/TheWorld_CSharpize/TheWorld_CSharpize/TheWorld_CSharpize/obj/Debug/netcoreapp3.0/TheWorld_CSharpize.pdb
+D:\DevSources\The_World_CSharpize\TheWorld_CSharpize\bin\Debug\netcoreapp3.0\TheWorld_CSharpize.exe
+D:\DevSources\The_World_CSharpize\TheWorld_CSharpize\bin\Debug\netcoreapp3.0\TheWorld_CSharpize.deps.json
+D:\DevSources\The_World_CSharpize\TheWorld_CSharpize\bin\Debug\netcoreapp3.0\TheWorld_CSharpize.runtimeconfig.json
+D:\DevSources\The_World_CSharpize\TheWorld_CSharpize\bin\Debug\netcoreapp3.0\TheWorld_CSharpize.runtimeconfig.dev.json
+D:\DevSources\The_World_CSharpize\TheWorld_CSharpize\bin\Debug\netcoreapp3.0\TheWorld_CSharpize.dll
+D:\DevSources\The_World_CSharpize\TheWorld_CSharpize\bin\Debug\netcoreapp3.0\TheWorld_CSharpize.pdb
+D:\DevSources\The_World_CSharpize\TheWorld_CSharpize\obj\Debug\netcoreapp3.0\TheWorld_CSharpize.AssemblyInfoInputs.cache
+D:\DevSources\The_World_CSharpize\TheWorld_CSharpize\obj\Debug\netcoreapp3.0\TheWorld_CSharpize.AssemblyInfo.cs
+D:\DevSources\The_World_CSharpize\TheWorld_CSharpize\obj\Debug\netcoreapp3.0\TheWorld_CSharpize.csproj.CoreCompileInputs.cache
+D:\DevSources\The_World_CSharpize\TheWorld_CSharpize\obj\Debug\netcoreapp3.0\TheWorld_CSharpize.dll
+D:\DevSources\The_World_CSharpize\TheWorld_CSharpize\obj\Debug\netcoreapp3.0\TheWorld_CSharpize.pdb
+D:\DevSources\The_World_CSharpize\TheWorld_CSharpize\obj\Debug\netcoreapp3.0\TheWorld_CSharpize.genruntimeconfig.cache
+D:\DevSources\The_World_CSharpize\TheWorld_CSharpize\obj\Debug\netcoreapp3.0\TheWorld_CSharpize.csprojAssemblyReference.cache
