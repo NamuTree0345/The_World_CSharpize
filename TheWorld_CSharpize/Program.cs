@@ -46,10 +46,18 @@ namespace TheWorld_CSharpize
                                 "없음",
                                 };
 
-        static Stat[] Mob = new Stat[10];
+        static Stat[] Mob = new Stat[21];
 
         static float Money = 100;//돈
 
+        static void SetMobStatGrade(int Grade, int Exp, int Gold, int MaxHp, int HpGen, int MaxPp, int PpGen, int Atk, int Def, int Speed, int Power)
+        {
+            Mob[Grade].Exp = Exp; Mob[Grade].MaxExp = Gold;
+            Mob[Grade].MaxHp = MaxHp; Mob[Grade].Hp = Mob[Grade].MaxHp; Mob[Grade].HpGen = HpGen;//채력 
+            Mob[Grade].MaxPp = MaxPp; Mob[Grade].Pp = MaxPp; Mob[Grade].PpGen = PpGen;//마나 
+            Mob[Grade].Atk = Atk; Mob[Grade].Def = Def;//공격력, 방어력 
+            Mob[Grade].Speed = Speed; Mob[Grade].Power = Power;//속도, 힘
+        }
         static void playerRegenTick()//회복 
         {
 
@@ -80,30 +88,52 @@ namespace TheWorld_CSharpize
 
         static string[] MAPINF =
         {
-	        "1층부터 10층의 던전에는 약한 마물들이 살고 있다.\n그 중 1층은 마을과도 연결되어 있는 곳.\n저 멀리 슬라임이 보인다.",
-               "저 멀리 슬라임 덩어리가 보인다.",
-               "저 멀리 해골 병사가 보인다.",
-               "저 멀리 스켈레톤이 보인다.",
-               "저 멀리 썩은 스켈레톤이 보인다.",
-               "저 멀리 고블린이 보인다.",
-               "저 멀리 홉 고블린이 보인다.",
-               "저 멀리 트롤이 보인다.",
-               "저 멀리 오크가 보인다.",
-               "보스가 있는 최상층이다.저 멀리 골렘이 보인다."
+            "1층부터 10층의 던전에는 약한 마물들이 살고 있다.\n그 중 1층은 마을과도 연결되어 있는 곳.\n저 멀리 슬라임이 보인다.",
+    "저 멀리 워터 슬라임이 보인다.",
+    "저 멀리 파이어 슬라임이 보인다.",
+    "저 멀리 포이즌 슬라임이 보인다.",
+    "저 멀리 일렉트릭 슬라임이 보인다.",
+    "저 멀리 아이스 슬라임이 보인다.",
+    "저 멀리 스톤 슬라임이 보인다.",
+    "저 멀리 에너지 슬라임이 보인다.",
+    "저 멀리 엘리트 슬라임이 보인다.",
+    "보스가 있는 최상층이다.\n저 멀리 슬라임 킹이 보인다.",
+    "2층부터 20층의 던전에는 초보자가 잡을 수 없는 마물들이 살고 있다.\n저 멀리 스켈레톤이 보인다.",
+    "저 멀리 스켈레톤 병사가 보인다.",
+    "저 멀리 올드 스켈레톤이 보인다.",
+    "저 멀리 올드 스켈레톤 병사가 보인다.",
+    "저 멀리 스켈레톤 아처가 보인다.",
+    "저 멀리 언데드 스켈레톤이 보인다.",
+    "저 멀리 스켈레톤 군주가 보인다.",
+    "저 멀리 언데드 스켈레톤 군주가 보인다.",
+    "저 멀리 The Skeleton이 보인다.",
+    "보스가 있는 최상층이다.\n저 멀리 스켈레톤 킹이 보인다.",
+    "최종 보스가 있는 곳이다.\n저 멀리 코끼리 똥구멍이 보인다."
 
         };
         static string[] MobName = 
         {
-	        "슬라임",
-	        "슬라임 덩어리",
-            "해골 병사",
-            "스켈레톤",
-            "썩은 스켈레톤",
-            "고블린",
-            "홉 고블린",
-            "트롤",
-            "오크",
-            "골렘"
+            "슬라임",
+    "워터 슬라임",
+    "파이어 슬라임",
+    "포이즌 슬라임",
+    "일렉트릭 슬라임",
+    "아이스 슬라임",
+    "스톤 슬라임",
+    "에너지 슬라임",
+    "엘리트 슬라임",
+    "슬라임 킹",
+    "스켈레톤",
+    "스켈레톤 병사",
+    "올드 스켈레톤",
+    "고대 스켈레톤 병사",
+    "스켈레톤 아처",
+    "언데드 스켈레톤",
+    "스켈레톤 군주",
+    "언데드 스켈레톤 군주",
+    "The Skeleton",
+    "스켈레톤 킹",
+    "[최종보스]코끼리 똥구멍",
         };
 
         static void Main(string[] args)
@@ -178,18 +208,18 @@ namespace TheWorld_CSharpize
             string Select = "";
 
             Line();
-            ColorString(3, "-잡화상점-\n");
+            ColorString(3, "-잡화상점-");
             Line();
-            ColorString(9, "-여러 가지 물품을 판매하고 있다.\n");
+            ColorString(9, "-여러 가지 물품을 판매하고 있다.");
 
         F1:
 
             Line();
-            ColorString(10, "[메뉴와 호환되는 숫자를 입력하세요.]\n");
-            ColorString(7, "1:소모품\n");
+            ColorString(10, "[메뉴와 호환되는 숫자를 입력하세요.]");
+            ColorString(7, "1:소모품");
             //ColorString(7,"2:장비\n");
             //ColorString(7,"3:판매\n");
-            ColorString(7, "4:탈주\n");
+            ColorString(7, "4:탈주");
 
             Select = Console.ReadLine();
 
@@ -226,15 +256,15 @@ namespace TheWorld_CSharpize
             string Select;
 
             Line();
-            ColorString(3, "-소모품-\n");
+            ColorString(3, "-소모품-");
 
         G1:
 
             Line();
-            ColorString(10, "[메뉴와 호환되는 숫자를 입력하세요.]\n");
-            ColorString(7, "1:물약\n");
-            ColorString(7, "2:[10골드]귀환석\n");
-            ColorString(7, "3:탈주\n");
+            ColorString(10, "[메뉴와 호환되는 숫자를 입력하세요.]");
+            ColorString(7, "1:물약");
+            ColorString(7, "2:[10골드]귀환석");
+            ColorString(7, "3:탈주");
 
             Select = Console.ReadLine();
 
@@ -271,7 +301,7 @@ namespace TheWorld_CSharpize
 
                 Line();
                 ColorString(6, "");
-                Console.WriteLine("{0}을(를)구매하였습니다!\n", ItemName[ItemNum]);
+                Console.WriteLine("{0}을(를)구매하였습니다!", ItemName[ItemNum]);
 
             }
             else
@@ -279,7 +309,7 @@ namespace TheWorld_CSharpize
 
                 Line();
                 ColorString(4, "");
-                Console.WriteLine("골드가 모자랍니다!\n");
+                Console.WriteLine("골드가 모자랍니다!");
 
             }
 
@@ -295,21 +325,21 @@ namespace TheWorld_CSharpize
             int Select = 0;
 
             Line();
-            ColorString(3, "-물약-\n");
+            ColorString(3, "-물약-");
 
         H1:
 
             Line();
-            ColorString(10, "[메뉴와 호환되는 숫자를 입력하세요.]\n");
-            ColorString(7, "1:[50골드]채력 물약(소)[Hp 50 회복]\n");
-            ColorString(7, "2:[1,000골드]채력 물약(중)[Hp 750 회복]\n");
-            ColorString(7, "3:[10,000골드]채력 물약(대)[Hp 5,000 회복]\n");
-            ColorString(7, "4:[100,000골드]채력 물약(특대)[Hp 30,000 회복]\n");
-            ColorString(7, "5:[50골드]마나 물약(소)[Pp 50 회복]\n");
-            ColorString(7, "6:[1,000골드]마나 물약(중)[Pp 750 회복]\n");
-            ColorString(7, "7:[10,000골드]마나 물약(대)[Pp 5,000 회복]\n");
-            ColorString(7, "8:[100,000골드]마나 물약(특대)[Pp 30,000 회복]\n");
-            ColorString(7, "9:탈주\n");
+            ColorString(10, "[메뉴와 호환되는 숫자를 입력하세요.]");
+            ColorString(7, "1:[50골드]채력 물약(소)[Hp 50 회복]");
+            ColorString(7, "2:[1,000골드]채력 물약(중)[Hp 750 회복]");
+            ColorString(7, "3:[10,000골드]채력 물약(대)[Hp 5,000 회복]");
+            ColorString(7, "4:[100,000골드]채력 물약(특대)[Hp 30,000 회복]");
+            ColorString(7, "5:[50골드]마나 물약(소)[Pp 50 회복]");
+            ColorString(7, "6:[1,000골드]마나 물약(중)[Pp 750 회복]");
+            ColorString(7, "7:[10,000골드]마나 물약(대)[Pp 5,000 회복]");
+            ColorString(7, "8:[100,000골드]마나 물약(특대)[Pp 30,000 회복]");
+            ColorString(7, "9:탈주");
 
             Select = int.Parse(Console.ReadLine());
 
@@ -335,7 +365,30 @@ namespace TheWorld_CSharpize
 
         }
 
-
+        static void SetMobStat()
+        {
+            SetMobStatGrade(0, 100, 10, 30, 0, 0, 0, 3, 0, 40, 3);
+            SetMobStatGrade(1, 200, 20, 40, 0, 0, 0, 4, 0, 100, 6);
+            SetMobStatGrade(2, 400, 40, 60, 0, 0, 0, 6, 0, 100, 9);
+            SetMobStatGrade(3, 700, 70, 90, 1, 0, 0, 9, 0, 100, 12);
+            SetMobStatGrade(4, 1100, 120, 150, 1, 0, 0, 13, 1, 100, 15);
+            SetMobStatGrade(5, 1600, 190, 230, 2, 0, 0, 18, 2, 100, 18);
+            SetMobStatGrade(6, 2200, 280, 480, 4, 0, 0, 24, 3, 100, 21);
+            SetMobStatGrade(7, 2900, 450, 750, 7, 0, 0, 31, 4, 100, 24);
+            SetMobStatGrade(8, 3700, 600, 1000, 10, 0, 0, 39, 5, 100, 27);
+            SetMobStatGrade(9, 15000, 2000, 5000, 50, 10, 0, 50, 10, 100, 50);
+            SetMobStatGrade(10, 5000, 800, 2000, 20, 10, 1, 100, 20, 100, 60);
+            SetMobStatGrade(11, 10000, 1700, 3000, 30, 20, 2, 200, 35, 100, 70);
+            SetMobStatGrade(12, 15000, 2600, 5000, 50, 30, 3, 300, 70, 100, 80);
+            SetMobStatGrade(13, 20000, 3500, 8500, 85, 40, 4, 450, 120, 100, 90);
+            SetMobStatGrade(14, 25000, 4700, 10000, 200, 50, 5, 700, 200, 100, 100);
+            SetMobStatGrade(15, 30000, 6000, 17500, 175, 60, 6, 1350, 300, 100, 110);
+            SetMobStatGrade(16, 40000, 8000, 25000, 250, 70, 7, 1750, 450, 100, 120);
+            SetMobStatGrade(17, 50000, 10500, 40000, 400, 80, 8, 2500, 1000, 100, 130);
+            SetMobStatGrade(18, 70000, 14500, 100000, 1000, 90, 9, 4000, 1500, 100, 140);
+            SetMobStatGrade(19, 200000, 25000, 250000, 2500, 200, 10, 10000, 3000, 100, 200);
+            SetMobStatGrade(20, 2147483100, 2147483100, 2147483100, 2147483100, 2147483100, 2147483100, 2147483100, 2147483100, 2147483100, 2147483100);
+        }
 
         static void City()//마을 
         {
@@ -347,75 +400,7 @@ namespace TheWorld_CSharpize
                 Mob[i] = new Stat();
             }
 
-            //1층
-            Mob[0].Exp = 1; Mob[0].MaxExp = 5;
-            Mob[0].MaxHp = 30; Mob[0].Hp = Mob[0].MaxHp; Mob[0].HpGen = 0;//채력 
-            Mob[0].MaxPp = 10; Mob[0].Pp = Mob[0].MaxPp; Mob[0].PpGen = 1;//마나 
-            Mob[0].Atk = 3; Mob[0].Def = 0;//공격력, 방어력 
-            Mob[0].Speed = 40; Mob[0].Power = 3;//속도, 힘
-
-            //2층
-            Mob[1].Exp = 20; Mob[1].MaxExp = 20;
-            Mob[1].MaxHp = 40; Mob[1].Hp = Mob[1].MaxHp; Mob[1].HpGen = 0;//채력 
-            Mob[1].MaxPp = 0; Mob[1].Pp = Mob[1].MaxPp; Mob[1].PpGen = 0;//마나 
-            Mob[1].Atk = 4; Mob[1].Def = 0;//공격력; 방어력 
-            Mob[1].Speed = 100; Mob[1].Power = 6;//속도; 힘 
-
-            //3층
-            Mob[2].Exp = 40;Mob[2].MaxExp = 40;
-            Mob[2].MaxHp = 60; Mob[2].Hp = Mob[2].MaxHp; Mob[2].HpGen = 0;//채력 
-            Mob[2].MaxPp = 0; Mob[2].Pp = Mob[2].MaxPp; Mob[2].PpGen = 0;//마나 
-            Mob[2].Atk = 6; Mob[2].Def = 0;//공격력; 방어력 
-            Mob[2].Speed = 100; Mob[2].Power = 9;//속도; 힘 
-
-            //4층
-            Mob[3].Exp = 70;Mob[3].MaxExp = 70;
-            Mob[3].MaxHp = 90; Mob[3].Hp = Mob[3].MaxHp; Mob[3].HpGen = 1;//채력 
-            Mob[3].MaxPp = 0; Mob[3].Pp = Mob[3].MaxPp; Mob[3].PpGen = 0;//마나 
-            Mob[3].Atk = 9; Mob[3].Def = 0;//공격력; 방어력 
-            Mob[3].Speed = 100; Mob[3].Power = 12;//속도; 힘 
-
-            //5층
-            Mob[4].Exp = 110;Mob[4].MaxExp = 120;
-            Mob[4].MaxHp = 150; Mob[4].Hp = Mob[4].MaxHp; Mob[4].HpGen = 1;//채력 
-            Mob[4].MaxPp = 0; Mob[4].Pp = Mob[4].MaxPp; Mob[4].PpGen = 0;//마나 
-            Mob[4].Atk = 13; Mob[4].Def = 0;//공격력; 방어력 
-            Mob[4].Speed = 100; Mob[4].Power = 15;//속도; 힘 
-
-            //6층
-            Mob[5].Exp = 160;Mob[5].MaxExp = 190;
-            Mob[5].MaxHp = 230; Mob[5].Hp = Mob[5].MaxHp; Mob[5].HpGen = 2;//채력 
-            Mob[5].MaxPp = 0; Mob[5].Pp = Mob[5].MaxPp; Mob[5].PpGen = 0;//마나 
-            Mob[5].Atk = 18; Mob[5].Def = 2;//공격력; 방어력 
-            Mob[5].Speed = 100; Mob[5].Power = 18;//속도; 힘 
-
-            //7층
-            Mob[6].Exp = 220;Mob[6].MaxExp = 280;
-            Mob[6].MaxHp = 480; Mob[6].Hp = Mob[6].MaxHp; Mob[6].HpGen = 4;//채력 
-            Mob[6].MaxPp = 0; Mob[6].Pp = Mob[6].MaxPp; Mob[6].PpGen = 0;//마나 
-            Mob[6].Atk = 24; Mob[6].Def = 3;//공격력; 방어력 
-            Mob[6].Speed = 100; Mob[6].Power = 21;//속도; 힘 
-
-            //8층
-            Mob[7].Exp = 290;Mob[7].MaxExp = 450;
-            Mob[7].MaxHp = 750; Mob[7].Hp = Mob[7].MaxHp; Mob[7].HpGen = 7;//채력 
-            Mob[7].MaxPp = 0; Mob[7].Pp = Mob[7].MaxPp; Mob[7].PpGen = 0;//마나 
-            Mob[7].Atk = 31; Mob[7].Def = 4;//공격력; 방어력 
-            Mob[7].Speed = 100; Mob[7].Power = 24;//속도; 힘 
-
-            //9층
-            Mob[8].Exp = 370;Mob[8].MaxExp = 600;
-            Mob[8].MaxHp = 1000; Mob[8].Hp = Mob[8].MaxHp; Mob[8].HpGen = 10;//채력 
-            Mob[8].MaxPp = 0; Mob[8].Pp = Mob[8].MaxPp; Mob[8].PpGen = 0;//마나 
-            Mob[8].Atk = 39; Mob[8].Def = 5;//공격력; 방어력 
-            Mob[8].Speed = 100; Mob[8].Power = 27;//속도; 힘 
-
-            //10층
-            Mob[9].Exp = 1500;Mob[9].MaxExp = 2000;
-            Mob[9].MaxHp = 5000; Mob[9].Hp = Mob[9].MaxHp; Mob[9].HpGen = 50;//채력 
-            Mob[9].MaxPp = 10; Mob[9].Pp = Mob[9].MaxPp; Mob[9].PpGen = 0;//마나 
-            Mob[9].Atk = 50; Mob[9].Def = 10;//공격력; 방어력 
-            Mob[9].Speed = 100; Mob[9].Power = 50;//속도; 힘
+            SetMobStat();
 
             //힐 
 
@@ -430,20 +415,20 @@ namespace TheWorld_CSharpize
 
 
             Line();
-            ColorString(8, "-던전의 마을-\n");
+            ColorString(8, "-던전의 마을-");
 
             Line();
-            ColorString(15, "유명한 던전이 있는 마을이다.\n");
+            ColorString(15, "유명한 던전이 있는 마을이다.");
 
         B1://B1
 
             Line();
-            ColorString(10, "[메뉴와 호환되는 숫자를 입력하세요.]\n");
-            ColorString(7, "1:던전 입장\n");
-            ColorString(7, "2:잡화상점 입장\n");
-            ColorString(7, "3:스테이더스 확인\n");
-            ColorString(7, "4:정비\n");
-            ColorString(7, "5:모드(TML)\n");
+            ColorString(10, "[메뉴와 호환되는 숫자를 입력하세요.]");
+            ColorString(7, "1:던전 입장");
+            ColorString(7, "2:잡화상점 입장");
+            ColorString(7, "3:스테이더스 확인");
+            ColorString(7, "4:정비");
+            ColorString(7, "5:모드(TML)");
 
             Select = Console.ReadLine();
 
@@ -509,7 +494,7 @@ namespace TheWorld_CSharpize
             int i = 0;
 
             Line();
-            ColorString(10, "[메뉴와 호환되는 숫자를 입력하세요.]\n");
+            ColorString(10, "[메뉴와 호환되는 숫자를 입력하세요.]");
 
             while (i < 19)
             {
@@ -521,7 +506,7 @@ namespace TheWorld_CSharpize
 
                     ColorString(15, "");
 
-                    Console.WriteLine("{0}:{1}\n", i + 1, i, ItemName[i]);
+                    Console.WriteLine("{0}:{1}", i + 1, i, ItemName[i]);
 
 
 
@@ -544,7 +529,7 @@ namespace TheWorld_CSharpize
             {
 
                 Line();
-                ColorString(5, "아이템이 존재하지 않거나 갯수가 부족합니다!\n");
+                ColorString(5, "아이템이 존재하지 않거나 갯수가 부족합니다!");
 
             }
 
@@ -561,7 +546,7 @@ namespace TheWorld_CSharpize
 
                     case 0:
                         Line();
-                        ColorString(4, "마을로 귀환합니다.\n");
+                        ColorString(4, "마을로 귀환합니다.");
                         Sleep(800);
                         Item[0] -= 1;
                         City();
@@ -573,7 +558,7 @@ namespace TheWorld_CSharpize
 
                     default:
                         Line();
-                        ColorString(5, "아이템이 존재하지 않거나 갯수가 부족합니다!\n");
+                        ColorString(5, "아이템이 존재하지 않거나 갯수가 부족합니다!");
                         SelectItem();
                         break;
 
@@ -590,7 +575,7 @@ namespace TheWorld_CSharpize
 
             Line();
 
-            ColorString(1, "-인벤토리-\n");
+            ColorString(1, "-인벤토리-");
 
         }
 
@@ -598,14 +583,14 @@ namespace TheWorld_CSharpize
         {
 
             Line();
-            ColorString(1, "-스테이더스-\n");
+            ColorString(1, "-스테이더스-");
             Line();
             ColorString(15, "");
-            Console.WriteLine("LV:{0} Exp:{1}/{2}\n", p.Lv, p.MaxExp, p.Exp);
-            Console.WriteLine("Hp:{0}/{1} HpGen:{2}\n", p.MaxHp, p.Hp, p.HpGen);
-            Console.WriteLine("Pp:%-10d/%-10dPpGen:%-20d\n", p.MaxPp, p.Pp, p.PpGen);
-            Console.WriteLine("Atk:{0} Def:{1}\n", p.Atk, p.Def);
-            Console.WriteLine("Speed:{0} Power:{1}\n", p.Speed, p.Power);
+            Console.WriteLine("LV:{0} Exp:{1}/{2}", p.Lv, p.MaxExp, p.Exp);
+            Console.WriteLine("Hp:{0}/{1} HpGen:{2}", p.MaxHp, p.Hp, p.HpGen);
+            Console.WriteLine("Pp:{0}/{1} PpGen:{2}", p.MaxPp, p.Pp, p.PpGen);
+            Console.WriteLine("Atk:{0} Def:{1}", p.Atk, p.Def);
+            Console.WriteLine("Speed:{0} Power:{1}", p.Speed, p.Power);
 
         }
 
@@ -613,16 +598,16 @@ namespace TheWorld_CSharpize
         {
 
             Line();
-            ColorString(1, "-장비-\n");
+            ColorString(1, "-장비-");
 
             Line();
             ColorString(15, "");
-            Console.WriteLine("모자:{0}\n", ItemName[p.Hat - 1]);
-            Console.WriteLine("갑옷:{0}\n", ItemName[p.Body - 1]);
-            Console.WriteLine("바지:{0}\n", ItemName[p.Leggings - 1]);
-            Console.WriteLine("신발:{0}\n", ItemName[p.Shose - 1]);
-            Console.WriteLine("무기:{0}\n", ItemName[p.Wepon - 1]);
-            Console.WriteLine("방패:{0}\n", ItemName[p.Shiled - 1]);
+            Console.WriteLine("모자:{0}", ItemName[p.Hat - 1]);
+            Console.WriteLine("갑옷:{0}", ItemName[p.Body - 1]);
+            Console.WriteLine("바지:{0}", ItemName[p.Leggings - 1]);
+            Console.WriteLine("신발:{0}", ItemName[p.Shose - 1]);
+            Console.WriteLine("무기:{0}", ItemName[p.Wepon - 1]);
+            Console.WriteLine("방패:{0}", ItemName[p.Shiled - 1]);
 
         }
 
@@ -634,19 +619,19 @@ namespace TheWorld_CSharpize
 
                 Line();
                 ColorString(1, "");
-                Console.WriteLine("{0}이(가) 죽었습니다!\n", MobName[Grade]);
+                Console.WriteLine("{0}이(가) 죽었습니다!", MobName[Grade]);
                 Sleep(800);
 
                 p.Exp += Mob[Grade].Exp;
                 Line();
                 ColorString(2, "");
-                Console.WriteLine("경험치를 {0} 획득하였습니다!\n", Mob[Grade].Exp);
+                Console.WriteLine("경험치를 {0} 획득하였습니다!", Mob[Grade].Exp);
                 Sleep(800);
 
                 Money += Mob[Grade].MaxExp;
                 Line();
                 ColorString(6, "");
-                Console.WriteLine("{0}골드를 획득하였습니다!\n", Mob[Grade].MaxExp);
+                Console.WriteLine("{0}골드를 획득하였습니다!", Mob[Grade].MaxExp);
                 Sleep(800);
 
                 CheckLvUp();
@@ -661,7 +646,7 @@ namespace TheWorld_CSharpize
         {
 
             Line();
-            ColorString(6, "레벨이 올랐습니다!\n");
+            ColorString(6, "레벨이 올랐습니다!");
 
             p.Lv += 1;
             p.Exp -= p.MaxExp;
@@ -709,10 +694,10 @@ namespace TheWorld_CSharpize
 
             playerRegenTick();
             Line();
-            ColorString(3, "-던전에 입장하였습니다!-\n");
+            ColorString(3, "-던전에 입장하였습니다!-");
             Sleep(2000);
             Line();
-            ColorString(4, "-기절시 귀환석이 없으면 사망하니 주의해주세요.\n");
+            ColorString(4, "-기절시 귀환석이 없으면 사망하니 주의해주세요.");
             Sleep(2000);
 
         }
@@ -726,7 +711,7 @@ namespace TheWorld_CSharpize
 
             Line();
             ColorString(3, "");
-            Console.WriteLine("-던전 {0}층-\n", Grade + 1);
+            Console.WriteLine("-던전 {0}층-", Grade + 1);
 
             Line();
             ColorString(9, "");
@@ -735,9 +720,10 @@ namespace TheWorld_CSharpize
         A1://A1
 
             Line();
-            ColorString(10, "[메뉴와 호환되는 숫자를 입력하세요.]\n");
-            ColorString(7, "1:전투\n");
-            ColorString(7, "2:스탯 확인\n");
+            ColorString(10, "[메뉴와 호환되는 숫자를 입력하세요.]");
+            ColorString(7, "1:전투");
+            ColorString(7, "2:스탯 확인");
+            ColorString(7, "3:정비");
             //ColorString(7,"3:인벤토리\n");
 
             Select = Console.ReadLine();
@@ -753,6 +739,12 @@ namespace TheWorld_CSharpize
                 case "2":
                     ShowStat();
                     Dungeon_Main(Grade);
+                    break;
+
+                case "3":
+                    ShowArmor();
+                    ShowInventory();
+                    SelectItem();
                     break;
 
                 //case 3:
@@ -771,7 +763,7 @@ namespace TheWorld_CSharpize
 
             Line();
             ColorString(4, "");
-            Console.WriteLine("[{0}이(가) 튀어나왔다!]\n", MobName[Grade]);
+            Console.WriteLine("[{0}이(가) 튀어나왔다!]", MobName[Grade]);
             Sleep(1000);
 
             string Select = "";
@@ -779,15 +771,15 @@ namespace TheWorld_CSharpize
         E1:
 
             Line();
-            ColorString(2, "[무엇을 하시겠습니까?]\n");
+            ColorString(2, "[무엇을 하시겠습니까?]");
 
         C1:
 
             Line();
-            ColorString(10, "[메뉴와 호환되는 숫자를 입력하세요.]\n");
-            ColorString(7, "1:공격\n");
+            ColorString(10, "[메뉴와 호환되는 숫자를 입력하세요.]");
+            ColorString(7, "1:공격");
             //ColorString(7,"2:방어\n");
-            //ColorString(7,"3:아이템 사용\n");
+            ColorString(7,"3:아이템 사용");
             //ColorString(7,"4:스킬\n");
 
             Select = Console.ReadLine();
@@ -798,6 +790,10 @@ namespace TheWorld_CSharpize
                 case "1":
                     Fight_Attek(Grade);
                     break;
+                case "3":
+                    ShowInventory();
+                    SelectItem();
+                    break;
 
                 default:
                     goto C1;//C1
@@ -807,6 +803,8 @@ namespace TheWorld_CSharpize
 
             CheckMobDied(Grade);
 
+            MobReganTick(Grade);
+
             MobAttek(Grade);
 
             CheckPlayerDied();
@@ -815,12 +813,31 @@ namespace TheWorld_CSharpize
 
         }
 
+        static void MobReganTick(int Grade)
+        {
+            Mob[Grade].Hp += Mob[Grade].HpGen;
+            Mob[Grade].Pp += Mob[Grade].PpGen;
+
+            if (Mob[Grade].Hp > Mob[Grade].MaxHp)
+            {
+
+                Mob[Grade].Hp = Mob[Grade].MaxHp;
+
+            }
+            if (Mob[Grade].Pp > Mob[Grade].MaxPp)
+            {
+
+                Mob[Grade].Pp = Mob[Grade].MaxPp;
+
+            }
+        }
+
         static void MobAttek(int Grade)//몹 공격 
         {
 
             Line();
             ColorString(5, "");
-            Console.WriteLine("{0}의 공격!\n", MobName[Grade]);
+            Console.WriteLine("{0}의 공격!", MobName[Grade]);
             Sleep(800);
 
             if (Mob[Grade].Atk - p.Def < 0)
@@ -828,7 +845,7 @@ namespace TheWorld_CSharpize
 
                 Line();
                 ColorString(4, "");
-                Console.WriteLine("0의 피해를 입었습니다!\n");
+                Console.WriteLine("0의 피해를 입었습니다!");
                 Sleep(800);
 
             }
@@ -839,7 +856,7 @@ namespace TheWorld_CSharpize
 
                 Line();
                 ColorString(4, "");
-                Console.WriteLine("{0}의 피해를 입었습니다!\n", Mob[Grade].Atk - p.Def);
+                Console.WriteLine("{0}의 피해를 입었습니다!", Mob[Grade].Atk - p.Def);
                 Sleep(800);
 
             }
@@ -853,7 +870,7 @@ namespace TheWorld_CSharpize
 
             Line();
             ColorString(2, "");
-            Console.WriteLine("남은 채력 {0}/{1}\n", p.MaxHp, p.Hp);
+            Console.WriteLine("남은 채력 {0}/{1}", p.MaxHp, p.Hp);
             Sleep(800);
 
 
@@ -867,17 +884,17 @@ namespace TheWorld_CSharpize
             {
 
                 Line();
-                ColorString(4, "기절하셨습니다.\n");
+                ColorString(4, "기절하셨습니다.");
                 Sleep(800);
 
                 if (Item[0] > 0)
                 {
 
                     Line();
-                    ColorString(4, "귀환석이 남아 있어 사망하지 않고 마을로 귀환합니다.\n");
+                    ColorString(4, "귀환석이 남아 있어 사망하지 않고 마을로 귀환합니다.");
                     Sleep(800);
                     Line();
-                    ColorString(4, "기절하여 경험치가 0으로 초기화되며, 요구되는 경험치량이 2배 증가합니다..\n");
+                    ColorString(4, "기절하여 경험치가 0으로 초기화되며, 요구되는 경험치량이 2배 증가합니다.");
                     Sleep(800);
                     p.Exp = 0;
                     p.MaxExp *= 2;
@@ -890,10 +907,10 @@ namespace TheWorld_CSharpize
                 {
 
                     Line();
-                    ColorString(4, "귀환석이 남아 있지 않습니다.\n당신은 사망하였습니다.\n");
+                    ColorString(4, "귀환석이 남아 있지 않습니다.\n당신은 사망하였습니다.");
                     Sleep(800);
                     Line();
-                    ColorString(4, "게임을 처음부터 다시 시작합니다.\n");
+                    ColorString(4, "게임을 처음부터 다시 시작합니다.");
                     Sleep(800);
                     Main(new string[0]);
 
@@ -911,7 +928,7 @@ namespace TheWorld_CSharpize
 
                 Line();
                 ColorString(15, "");
-                Console.WriteLine("{0}에게 0의 피해를 입혔습니다!\n", arg0: Mob[Grade]);
+                Console.WriteLine("{0}에게 0의 피해를 입혔습니다!", arg0: Mob[Grade]);
                 Sleep(800);
 
             }
@@ -920,7 +937,7 @@ namespace TheWorld_CSharpize
 
                 Line();
                 ColorString(15, "");
-                Console.WriteLine("{0}에게 {1}의 피해를 입혔습니다!\n", MobName[Grade], p.Atk - Mob[Grade].Def);
+                Console.WriteLine("{0}에게 {1}의 피해를 입혔습니다!", MobName[Grade], p.Atk - Mob[Grade].Def);
                 Sleep(800);
 
                 Mob[Grade].Hp -= p.Atk - Mob[Grade].Def;
@@ -936,7 +953,7 @@ namespace TheWorld_CSharpize
 
             Line();
             ColorString(15, "");
-            Console.WriteLine("{0} 남은 채력:{1}/{2}\n", MobName[Grade], Mob[Grade].MaxHp, Mob[Grade].Hp);
+            Console.WriteLine("{0} 남은 채력:{1}/{2}", MobName[Grade], Mob[Grade].MaxHp, Mob[Grade].Hp);
             Sleep(800);
 
         }
